@@ -2,12 +2,17 @@
 
 const passengerName = document.querySelector('#passengerName');
 const journeyDistance = document.querySelector('#journeyDistance');
-const passengerAge = document.querySelector('#passengerAge')
+const passengerAge = document.querySelector('#passengerAge');
+const ratePerKM = 0.21;
+
 
 const btn = document.querySelector("button"); 
 btn.addEventListener('click', function () {
-    console.log("Passenger name: " + passengerName.value + ", Journey distance: " + journeyDistance.value + ", Passenger age: " + passengerAge.value) ;
+    console.log("Passenger name: " + passengerName.value + ", Journey distance: " + journeyDistance.value + ", Passenger age: " + passengerAge.value);
 
+    const ticketPrice = journeyDistance.value * ratePerKM;
+    
+    console.log("Ticket price: " + ticketPrice);
 });
 
 
@@ -26,13 +31,6 @@ if (isNaN(userAge)) {
 } else {
     
 }
-
-// Get ticket price (0.21 €/km)
-const ticketPrice = trainDistance * 0.21;
-
-// console.log("Ticket price: " + ticketPrice);
-
-document.getElementById("ticketPrice").innerHTML = (Math.round(ticketPrice * 100) / 100).toFixed(2) + " €";
 
 // Get ticket sale (-20% for minors and -40% for over 65)
 let ticketSale = 0;
