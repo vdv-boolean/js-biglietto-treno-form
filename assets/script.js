@@ -12,7 +12,9 @@ let ticketPrice = 0;
 
 
 let passengerNameShow = document.querySelector('#passengerNameShow');
-let ticketPriceShow = document.querySelector('#ticketPriceShow')
+let ticketPriceShow = document.querySelector('#ticketPriceShow');
+let codeShow = document.querySelector('#codeShow')
+let cabinShow = document.querySelector('#cabinShow')
 
 
 
@@ -43,6 +45,9 @@ btn.addEventListener('click', function () {
         ticketPriceShow.innerHTML = ticketPriceFinal + " €";
         saleShow.innerHTML = "Tariffa base";
     }
+
+    cabinShow.innerHTML = (Math.floor(Math.random()* 9) + 1);
+    codeShow.innerHTML = (Math.floor(Math.random()* (99999 - 10000) + 10000));  
 
 });
 
