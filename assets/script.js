@@ -3,16 +3,47 @@
 const passengerName = document.querySelector('#passengerName');
 const journeyDistance = document.querySelector('#journeyDistance');
 const passengerAge = document.querySelector('#passengerAge');
+
+// Get Ticket price
 const ratePerKM = 0.21;
+let ticketPrice = 0;
+
+
+
+
+let passengerNameShow = document.querySelector('#passengerNameShow');
+let ticketPriceShow = document.querySelector('#ticketPriceShow')
+
+
 
 
 const btn = document.querySelector("button"); 
 btn.addEventListener('click', function () {
-    console.log("Passenger name: " + passengerName.value + ", Journey distance: " + journeyDistance.value + ", Passenger age: " + passengerAge.value);
-
-    const ticketPrice = journeyDistance.value * ratePerKM;
     
-    console.log("Ticket price: " + ticketPrice);
+    passengerNameShow.innerHTML = passengerName.value;
+    let ticketSale = 0;
+    let ticketPriceFinal = 0;
+    ticketPrice = journeyDistance.value * ratePerKM;
+    if (passengerAge.value < 18) {
+        ticketSale = ticketPrice / 5;
+        ticketPriceFinal = ticketPrice - ticketSale;
+        ticketPriceShow.innerHTML = ticketPriceFinal + " €";
+        saleShow.innerHTML = "Sconto minorenni";
+    }
+    
+    else if (passengerAge.value >= 65) {
+        ticketSale = ticketPrice / 2.5;
+        ticketPriceFinal = ticketPrice - ticketSale;
+        ticketPriceShow.innerHTML = ticketPriceFinal + " €";
+        saleShow.innerHTML = "Sconto Over 65";
+    }
+    
+    else  {
+        ticketPriceFinal = ticketPrice - ticketSale;
+        ticketPriceShow.innerHTML = ticketPriceFinal + " €";
+        saleShow.innerHTML = "Tariffa base";
+    }
+
 });
 
 
@@ -32,25 +63,7 @@ if (isNaN(userAge)) {
     
 }
 
-// Get ticket sale (-20% for minors and -40% for over 65)
-let ticketSale = 0;
 
-if (userAge = 18) {
-    ticketSale = ticketPrice / 5;
-    // console.log("Sale: -20% off. Savings: " + ticketSale);
-    document.getElementById("sale").innerHTML = "- 20%";
-}
-
-else if (userAge >= 65) {
-    ticketSale = ticketPrice / 2.5;
-    // console.log("Sale: -40% off. Savings: " + ticketSale);
-    document.getElementById("sale").innerHTML = "- 40%";
-}
-
-else  {
-    // console.log("Sale: none");
-    document.getElementById("sale").innerHTML = "Nessuno";
-}
 
 document.getElementById("ticketSale").innerHTML = (Math.round(ticketSale * 100) / 100).toFixed(2) + " €";
 
