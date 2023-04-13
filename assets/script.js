@@ -1,20 +1,17 @@
-// welcome message
-alert("Ciao, adesso calcoreremo il prezzo del biglietto per il tuo prossimo viaggio")
+// Recive information like name of passenger, his age and distance of journey
 
-// Ask for train kilometers
-const trainDistance = parseInt(prompt("Distanza da percorrere in treno?"));
+const passengerName = document.querySelector('#passengerName');
+const journeyDistance = document.querySelector('#journeyDistance');
+const passengerAge = document.querySelector('#passengerAge')
 
-// console.log("Train distance: " + trainDistance);
+const btn = document.querySelector("button"); 
+btn.addEventListener('click', function () {
+    console.log("Passenger name: " + passengerName.value + ", Journey distance: " + journeyDistance.value + ", Passenger age: " + passengerAge.value) ;
 
-document.getElementById("trainDistance").innerHTML = (Math.round(trainDistance * 100) / 100).toFixed(2) + " km";
+});
 
-// Ask for user age
-const userAge = parseInt(prompt("Età passeggero?"));
 
-// console.log("Passenger age: " + userAge);
-
-document.getElementById("userAge").innerHTML = userAge + " anni";
-
+/*
 // Input validator
 if (isNaN(trainDistance)) {
     // console.log("Hai inserito un valore errato nella distanza. Aggiorna la pagina e riprova");
@@ -65,3 +62,5 @@ let finalPrice = ticketPrice - ticketSale;
 // console.log("Final price: " + finalPrice);
 
 document.getElementById("finalPrice").innerHTML = (Math.round(finalPrice * 100) / 100).toFixed(2) + " €";
+
+*/
